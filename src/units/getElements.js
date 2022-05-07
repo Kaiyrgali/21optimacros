@@ -1,17 +1,25 @@
 export const getElements = (store) => {
   const elements = new Array();
   console.log('Refreshing elements');
-  const array = store.entityLabelPages[0].labels
-  for (let i = 0; i < array.length; i++) {
-    // console.log(array[i])
-    if (array[i].includes('element')) {
+  const obj = store.entityLabelPages[0]
+  for (let i = 0; i < obj.labels.length; i++) {
+    if (obj.labels[i].includes('element')) {
       const current = {
-        label: array[i],
-        Id: store.entityLabelPages[0].entityLongIds[i],
-        ParentId: store.entityLabelPages[0].parentEntityLongIds[i],
+        Label: obj.labels[i],
+        Id: obj.entityLongIds[i],
+        ParentId: obj.parentEntityLongIds[i],
+        // child: [],
       }
       elements.push(current);
       }
     }
+
+  // for (let i = 0; i < elements.length; i++) {
+  //   if (elements[i].includes('.')) {
+  //     const elements[i].child = 
+  //   }
+  //   const number = ;
+    
+  // }
   return elements;
 }

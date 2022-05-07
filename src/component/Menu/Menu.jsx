@@ -2,11 +2,15 @@ import React, { useState, useRef, useMemo } from 'react';
 // import './Menu.css';
 import { store } from '../../service/getJson';
 import { getElements} from '../../units/getElements';
+import Item from './Item';
 
-console.log('Menu store >', store.entityLabelPages);
-console.log('Menu store labels >', store.entityLabelPages[0].labels);
-
-
+const getLevel = (item) => {
+  return item.split(".").length
+  if (!item.includes('.')) {
+    return '1'
+  } 
+  return '2'
+}
 
 function Menu() {
   const [refresh, setRefresh] = useState(false);
@@ -19,6 +23,13 @@ function Menu() {
 
   return (
     <div className="Menu">
+      {elem.map((item, i)=> 
+        <Item
+          key={i}
+          label={item}
+          level={item.Label.split(".").length}
+        />
+      )}
       <button onClick={
         ()=>setRenderCount(prev=>prev+1)
       }>Render {renderCount}</button>
