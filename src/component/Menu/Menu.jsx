@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 // import './Menu.css';
 import { store } from '../../service/getJson';
+import { getElements} from '../../units/getElements';
 
 console.log('Menu store >', store.entityLabelPages);
 console.log('Menu store labels >', store.entityLabelPages[0].labels);
 
-const getElements = () => {
-  const elements = new Array();
-  const array = store.entityLabelPages[0].labels
-  for (let i = 0; i < array.length; i++) {
-    // console.log(array[i])
-    if (array[i].includes('element')) {
-      const current = {
-        label: array[i],
-        Id: store.entityLabelPages[0].entityLongIds[i],
-        ParentId: store.entityLabelPages[0].parentEntityLongIds[i],
-      }
-      elements.push(current);
-      }
-    }
-  return elements;
-}
+
 
 function Menu() {
-  const [elem, setElem] = useState(getElements);
-  console.log('Initial elem >', elem);
+  const [refresh, setRefresh] = useState(false);
+  const [renderCount, setRenderCount] = useState(1);
+  const elem = useMemo(()=> {
+    return getElements(store)
+  }, [refresh]);
+  console.log('elem >', elem);
+
 
   return (
     <div className="Menu">
+      <button onClick={
+        ()=>setRenderCount(prev=>prev+1)
+      }>Render {renderCount}</button>
+      <button onClick={
+        ()=>setRefresh(prev=>!prev)
+      }>Refresh {refresh}</button>
       {/* {store.entityLabelPages} */}
     </div>
   );
