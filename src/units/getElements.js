@@ -1,5 +1,5 @@
 export const getElements = (store) => {
-  const elements = new Array();
+  const elements = [];
   console.log('Refreshing elements');
   const obj = store.entityLabelPages[0]
   for (let i = 0; i < obj.labels.length; i++) {
@@ -8,18 +8,11 @@ export const getElements = (store) => {
         label: obj.labels[i],
         id: obj.entityLongIds[i],
         parentId: obj.parentEntityLongIds[i],
-        // child: [],
+        level: obj.labels[i].split(".").length
       }
       elements.push(current);
       }
     }
 
-  // for (let i = 0; i < elements.length; i++) {
-  //   if (elements[i].includes('.')) {
-  //     const elements[i].child = 
-  //   }
-  //   const number = ;
-    
-  // }
   return elements;
 }

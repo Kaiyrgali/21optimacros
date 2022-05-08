@@ -1,6 +1,10 @@
 .Menu-Item {
-
+  cursor: pointer;
 }
+
+/* .Menu-Item_selected {
+  background-color: green;
+} */
 
 .Menu-Item_level1 {
   padding-left: 0px;

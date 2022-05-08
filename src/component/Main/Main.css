@@ -1,11 +1,11 @@
 .Main {
   margin: 20px;
   width: 500px;
-  height: 500px;
+  height: 550px;
   border: 1px solid black;
 }
 
-.Layout {
+.Container {
   display: flex;
   height: 440px;
   margin: 30px;
@@ -25,5 +25,11 @@
   border: 2px solid red;
   height: 100%;
   width: 50%;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: end;
+  margin-right: 30px;
 }
 

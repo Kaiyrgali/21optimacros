@@ -6,14 +6,14 @@ function Details({ active }) {
   
   console.log('Details active >', active);
 
-  if ( active===null ) {return null}
-  const {Label, id, parentId} = active;
+  if ( active===null ) {return <div className="Details"></div>}
+  const { label, id, parentId } = active;
 
-  console.log('Details label >', Label);
+  // console.log('Details label >', label);
 
   return (
-    <div className="Details-Text">
-      <p className="Details-Item">Label: {Label}</p>
+    <div className="Details">
+      <p className="Details-Item">Label: {label}</p>
       <p className="Details-Item">Id: {id}</p>
       <p className="Details-Item">ParentId: {parentId}</p>
     </div>
