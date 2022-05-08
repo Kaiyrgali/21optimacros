@@ -7,9 +7,9 @@ import Buttons from '../Buttons';
 function Layout() {
 
   return (
-    <div className="Layout">
+    <div >
       <Menu />
-      <Details />
+      {/* <Details /> */}
       <Buttons />
     </div>
   );

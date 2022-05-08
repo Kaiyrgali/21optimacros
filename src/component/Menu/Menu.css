@@ -1,4 +1,29 @@
-.Menu {
+.Main {
+  margin: 20px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
+
+.Layout {
   display: flex;
+  height: 440px;
+  margin: 30px;
+}
+
+.Menu {
+  padding: 5px;
+  border: 2px solid blue;
+  height: 100%;
+  width: 50%;
+  margin-right: 10px;
+  overflow: auto;
+}
+
+.Details {
+  padding: 5px;
+  border: 2px solid red;
+  height: 100%;
+  width: 50%;
 }
 

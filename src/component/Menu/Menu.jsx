@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from 'react';
-// import './Menu.css';
+import './Menu.css';
 import { store } from '../../service/getJson';
 import { getElements} from '../../units/getElements';
 import Item from './Item';
@@ -23,28 +23,29 @@ function Menu() {
 
   return (
     <div className="Main">
-      <div className="Menu">
-        {elem.map((item, i)=> 
-          <Item
-            key={i}
-            label={item}
-            level={item.Label.split(".").length}
-            changeActiveLabel={changeActiveLabel}
-          />
-        )}
+      <div className="Layout">
+        <div className="Menu">
+          {elem.map((item, i)=> 
+            <Item
+              key={i}
+              label={item}
+              level={item.label.split(".").length}
+              changeActiveLabel={changeActiveLabel}
+            />
+          )}
+        </div>
+
+        <div className="Details">
+          <Details active={active} />
+        </div>
       </div>
 
-      <div className="Details">
-        <Details active={active} />
-      </div>
-      
-        <button onClick={
-          ()=>setRenderCount(prev=>prev+1)
-        }>Render {renderCount}</button>
-        <button onClick={
-          ()=>setRefresh(prev=>!prev)
-        }>Refresh {refresh}</button>
-        {/* {store.entityLabelPages} */}
+      <button onClick={
+        ()=>setRenderCount(prev=>prev+1)
+      }>Render {renderCount}</button>
+      <button onClick={
+        ()=>setRefresh(prev=>!prev)
+      }>Refresh {refresh}</button>
     </div>
   );
 }

@@ -5,9 +5,9 @@ export const getElements = (store) => {
   for (let i = 0; i < obj.labels.length; i++) {
     if (obj.labels[i].includes('element')) {
       const current = {
-        Label: obj.labels[i],
-        Id: obj.entityLongIds[i],
-        ParentId: obj.parentEntityLongIds[i],
+        label: obj.labels[i],
+        id: obj.entityLongIds[i],
+        parentId: obj.parentEntityLongIds[i],
         // child: [],
       }
       elements.push(current);

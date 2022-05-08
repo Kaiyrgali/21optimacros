@@ -11,7 +11,7 @@ function Item({ label, level, changeActiveLabel }) {
       className={style}
       onClick={()=>changeActiveLabel(label)}
     >
-        {label.Label}
+        {label.label}
     </div>
   );
 }
