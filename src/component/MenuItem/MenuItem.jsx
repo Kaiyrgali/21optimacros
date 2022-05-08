@@ -12,8 +12,6 @@ function MenuItem({
  }) {
   const style = `Menu-Item Menu-Item_level${label.level}`;
 
-  
-
   return (
     <div
       className={style}
@@ -23,10 +21,7 @@ function MenuItem({
       onDragEnd={(e) => dragEndHandler(e)}
       onDragOver={(e) => dragOverHandler(e)}
       onDrop={(e) => dropHandler(e, label)}
-      onClick={()=>{
-        // setSelected('Menu-Item_selected')
-        changeActiveLabel(label)
-      }}
+      onClick={()=> changeActiveLabel(label)}
     >
       {label.label}
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Main.css';
 import { getElements } from '../../units/getElements';
 import MenuItem from '../MenuItem';
@@ -13,7 +13,6 @@ const getTree = () => {
   };
 }
 
-
 function Main() {
   const [refresh, setRefresh] = useState(false);
   const [active, setActive] = useState(null);
@@ -21,13 +20,11 @@ function Main() {
   const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
-    console.log('use effect run');
     fetch(_apiBase)
       .then(res => {
         return res.json();
       })
       .then(data => {
-        console.log('fetch data >', data);
         const elem = getElements(data)
         setList(elem)
       })
@@ -47,19 +44,17 @@ function Main() {
       ? 1 
       : next === 0 ? 100 : next;
     list.splice(indexActive,indexNext)
-    setList( prev => prev.slice());
+    setList(prev => prev.slice());
     setActive(null);
   }
 
   const dragStartHandler = (e, label) => {
-    console.log('drag >', label);
     const index = list.indexOf(label);
     setStartIndex(index);
   }
   const dragEndHandler = (e) => {
     e.target.style.background = 'white';
   }
-
   const dragOverHandler = (e) => {
     e.preventDefault();
     e.target.style.background = 'lightgray';
@@ -67,7 +62,6 @@ function Main() {
   const dropHandler = (e, label) => {
     e.target.style.background = 'white';
     e.preventDefault();
-    console.log('drag >', label);
     const dropIndex = list.indexOf(label);
     const newList = list.slice(0,dropIndex).concat(list[startIndex],list.slice(dropIndex,startIndex), list.slice(startIndex+1));
     setList(newList);

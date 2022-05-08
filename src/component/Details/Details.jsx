@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-// import './Details.css';
-// import getData from '../../service/getData';
+import React from 'react';
 
 function Details({ active }) {
-  
-  console.log('Details active >', active);
-
-  if ( active===null ) {return <div className="Details"></div>}
+  if ( active === null ) {return <div className="Details"></div>}
   const { label, id, parentId } = active;
-
-  // console.log('Details label >', label);
 
   return (
     <div className="Details">
