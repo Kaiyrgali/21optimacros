@@ -18,6 +18,7 @@ function Main() {
   const [refresh, setRefresh] = useState(false);
   const [active, setActive] = useState(null);
   const [list, setList] = useState(null);
+  const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     console.log('use effect run');
@@ -50,6 +51,28 @@ function Main() {
     setActive(null);
   }
 
+  const dragStartHandler = (e, label) => {
+    console.log('drag >', label);
+    const index = list.indexOf(label);
+    setStartIndex(index);
+  }
+  const dragEndHandler = (e) => {
+    e.target.style.background = 'white';
+  }
+
+  const dragOverHandler = (e) => {
+    e.preventDefault();
+    e.target.style.background = 'lightgray';
+  }
+  const dropHandler = (e, label) => {
+    e.target.style.background = 'white';
+    e.preventDefault();
+    console.log('drag >', label);
+    const dropIndex = list.indexOf(label);
+    const newList = list.slice(0,dropIndex).concat(list[startIndex],list.slice(dropIndex,startIndex), list.slice(startIndex+1));
+    setList(newList);
+  }
+  
   if (list === null) {return <div className="Main">Loading...</div>}
 
   return (
@@ -61,6 +84,10 @@ function Main() {
               key={i}
               label={item}
               changeActiveLabel={changeActiveLabel}
+              dragStartHandler={dragStartHandler}
+              dragEndHandler={dragEndHandler}
+              dragOverHandler={dragOverHandler}
+              dropHandler={dropHandler}
             />
           )}
         </div>
