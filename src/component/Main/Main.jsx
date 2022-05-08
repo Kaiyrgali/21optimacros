@@ -6,6 +6,14 @@ import Details from '../Details';
 
 const  _apiBase = 'https://gist.githubusercontent.com/avydashenko/e1702c1ef26cddd006da989aa47d4f62/raw/633c9211d1a1816d8286368d9ff9717f343c508a/view.json';
 
+const getTree = () => {
+  const tree = document.querySelectorAll('html');
+  for (let elem of tree) {
+    console.log(elem)
+  };
+}
+
+
 function Main() {
   const [refresh, setRefresh] = useState(false);
   const [active, setActive] = useState(null);
@@ -68,6 +76,9 @@ function Main() {
           setRefresh(prev=>!prev);
         }}>
           Refresh {refresh}
+        </button>
+        <button onClick={()=>getTree()}>
+          Apply
         </button>
       </div>
 

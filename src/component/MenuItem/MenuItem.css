@@ -2,9 +2,9 @@
   cursor: pointer;
 }
 
-/* .Menu-Item_selected {
+.Menu-Item:hover {
   background-color: green;
-} */
+}
 
 .Menu-Item_level1 {
   padding-left: 0px;
